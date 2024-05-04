@@ -1,7 +1,8 @@
+// import { Board } from "../data/Board";
+
 export const onDragEnd = (result: any, columns: any, setColumns: any) => {
   if (!result.destination) return;
   const { source, destination } = result;
-  console.log(result);
 
   if (source.droppableId !== destination.droppableId) {
     const sourceColumn = columns[source.droppableId];
@@ -21,6 +22,19 @@ export const onDragEnd = (result: any, columns: any, setColumns: any) => {
       [destination.droppableId]: {
         ...destColumn,
         items: destItems,
+      },
+    });
+  } else {
+    const column = columns[source.droppableId];
+    const copiedItems = [...column.items];
+    const [removed] = copiedItems.splice(source.index, 1);
+    copiedItems.splice(destination.index, 0, removed);
+
+    setColumns({
+      ...columns,
+      [source.droppableId]: {
+        ...column,
+        items: copiedItems,
       },
     });
   }
