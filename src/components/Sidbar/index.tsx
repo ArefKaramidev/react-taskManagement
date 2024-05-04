@@ -65,7 +65,7 @@ const Sidebar = () => {
       <div className="w-full h-[calc(100vh-70px)]  border-r flex flex-col items-center gap-2 border-slate-300 bg-white py-5 px-3 relative">
         {navLinks.map((link) => (
           <div
-            key={link.item}
+            key={link.title}
             className={`flex items-center gap-2 w-full rounded-lg hover:bg-orange-300 px-2 py-3 cursor-pointer ${
               link.active ? "bg-orange-300" : "bg-transparent"
             }`}
