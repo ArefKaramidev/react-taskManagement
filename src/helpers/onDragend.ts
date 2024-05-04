@@ -1,6 +1,9 @@
+import { Board } from "../data/Board";
+
 export const onDragEnd = (result: any, columns: any, setColumns: any) => {
   if (!result.destination) return;
   const { source, destination } = result;
+  console.log(result);
 
   if (source.droppableId !== destination.droppableId) {
     const sourceColumn = columns[source.droppableId];
@@ -35,5 +38,6 @@ export const onDragEnd = (result: any, columns: any, setColumns: any) => {
         items: copiedItems,
       },
     });
+    setColumns(Board);
   }
 };
